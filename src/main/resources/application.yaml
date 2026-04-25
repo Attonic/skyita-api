@@ -1,3 +1,40 @@
+server:
+  port: 8080  # Porta onde a aplicação vai rodar
+
 spring:
-  application:
-    name: skyita
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER_NAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+app:
+
+  location:
+    latitude:  -3.3936   # Latitude de Itapecuru-Mirim/MA
+    longitude: -44.3669  # Longitude de Itapecuru-Mirim/MA
+    altitude:  30        # Altitude em metros acima do solo
+    city: Itapecuru-Mirim
+
+  apis:
+    n2yo:
+      base-url: https://api.n2yo.com/rest/v1/satellite
+      api-key: ${API_KEY_N2YO}
+
+    solar-system:
+      base-url: https://api.le-systeme-solaire.net/rest
+      token: ${TOKEN_SOLAR_SY}
+
+logging:
+  level:
+    com.seunome.skyapi: DEBUG
+    org.springframework.web: INFO
