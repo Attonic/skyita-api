@@ -1,4 +1,4 @@
-# 🛰️ Sky Visibility API
+# 🛰️ Sky Ita API
 
 API REST em Java + Spring Boot que busca satélites e planetas visíveis no céu uma vez por dia e salva no MySQL.
 
@@ -46,4 +46,4 @@ app:
 
 ## Como funciona
 
-O scheduler roda todo dia à meia-noite, busca os dados nas APIs [N2YO](https://www.n2yo.com/api/) e [Le Système Solaire](https://api.le-systeme-solaire.net) e salva no banco. O frontend só lê do banco — sem chamar APIs externas diretamente.
+O scheduler roda todo dia à meia-noite, busca os dados nas APIs [N2YO](https://www.n2yo.com/api/) e [Le Système Solaire](https://api.le-systeme-solaire.net) e salva no banco. O frontend só lê do banco sem chamar APIs externas diretamente.
