@@ -13,7 +13,7 @@ public record SkySnapshotResponseDto(
         double latitude,
         double longitude,
         List<SatelliteResponseDto> satellites,
-        List<PlanetResponse> planets,
+        List<PlanetResponseDto> planets,
         int satelliteCount,
         int planetCount
 ) {
