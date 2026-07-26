@@ -1,0 +1,89 @@
+name: "🐛 Bug"
+description: "Relato de comportamento incorreto ou inesperado no sistema."
+title: "[BUG] "
+labels: ["bug"]
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        > Use este template para reportar comportamentos incorretos encontrados em qualquer ambiente.
+        > Seja específico: quanto mais detalhes, mais rápido o bug é corrigido.
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: "Descrição do bug"
+      description: "O que aconteceu de errado?"
+      placeholder: "Ao clicar em 'Resgatar recompensa', a página retorna erro 500 sem mensagem para o usuário."
+    validations:
+      required: true
+
+  - type: textarea
+    id: passos
+    attributes:
+      label: "Passos para reproduzir"
+      placeholder: |
+        1. Fazer login como aluno
+        2. Acessar a loja de recompensas
+        3. Selecionar qualquer recompensa real
+        4. Clicar em "Resgatar"
+        5. Observar o erro 500 na tela
+    validations:
+      required: true
+
+  - type: textarea
+    id: esperado
+    attributes:
+      label: "Comportamento esperado"
+      placeholder: "O sistema deveria exibir uma confirmação de resgate e deduzir os pontos do saldo do aluno."
+    validations:
+      required: true
+
+  - type: textarea
+    id: atual
+    attributes:
+      label: "Comportamento atual"
+      placeholder: "Página retorna erro 500. Nenhum ponto é debitado. Nenhuma mensagem de erro amigável é exibida."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severidade
+    attributes:
+      label: "Severidade"
+      options:
+        - "🔴 Crítico – sistema inoperante ou perda de dados"
+        - "🟠 Alto – funcionalidade principal comprometida"
+        - "🟡 Médio – funcionalidade degradada, existe workaround"
+        - "🟢 Baixo – problema cosmético ou de usabilidade"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ambiente
+    attributes:
+      label: "Ambiente"
+      options:
+        - Produção
+        - Homologação
+        - Desenvolvimento local
+    validations:
+      required: true
+
+  - type: input
+    id: us_relacionada
+    attributes:
+      label: "User Story relacionada"
+      placeholder: "US-044  |  Ref: #71"
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidencias
+    attributes:
+      label: "Evidências"
+      description: "Cole prints, logs ou links de vídeo que ajudem a reproduzir o bug."
+      placeholder: "![screenshot](URL) \n\nLog do servidor: ..."
+    validations:
+      required: false

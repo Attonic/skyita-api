@@ -1,0 +1,71 @@
+name: "⚙️ Tech Debt"
+description: "Registro de débito técnico que precisa ser endereçado em sprint futura."
+title: "[TECH-DEBT] "
+labels: ["tech-debt"]
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        > **Débito técnico** é código ou decisão de design que funciona mas que precisará ser
+        > revisado no futuro. Registrar é o primeiro passo para não ignorar.
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: "Descrição do débito"
+      description: "O que foi feito de forma subótima e por quê?"
+      placeholder: |
+        A validação de CNPJ está sendo feita com regex simples no frontend.
+        O correto seria ter uma validação completa (dígitos verificadores) no backend.
+        Foi feito assim na Sprint 1 por falta de tempo.
+    validations:
+      required: true
+
+  - type: textarea
+    id: impacto
+    attributes:
+      label: "Impacto / Risco"
+      description: "O que pode acontecer se este débito não for resolvido?"
+      placeholder: "CNPJs inválidos podem ser cadastrados, corrompendo dados e gerando falhas em integrações futuras com a Receita Federal."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solucao
+    attributes:
+      label: "Solução proposta"
+      placeholder: |
+        - Implementar validação completa de CNPJ (módulo 11) no backend
+        - Mover lógica de validação para um serviço dedicado reutilizável
+        - Adicionar testes unitários cobrindo CNPJs válidos e inválidos
+    validations:
+      required: false
+
+  - type: dropdown
+    id: prioridade
+    attributes:
+      label: "Prioridade"
+      options:
+        - "priority:high"
+        - "priority:medium"
+        - "priority:low"
+    validations:
+      required: true
+
+  - type: input
+    id: us_origem
+    attributes:
+      label: "Origem (US ou Sprint)"
+      description: "Onde e quando este débito foi gerado?"
+      placeholder: "US-003 – Sprint 1"
+    validations:
+      required: false
+
+  - type: input
+    id: estimativa
+    attributes:
+      label: "Estimativa de esforço para correção"
+      placeholder: "3 story points / ~4h"
+    validations:
+      required: false

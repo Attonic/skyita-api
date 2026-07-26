@@ -1,0 +1,115 @@
+name: "📖 User Story"
+description: "Requisito funcional descrito na perspectiva do usuário."
+title: "[US-000] "
+labels: ["user-story"]
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        > **User Story** descreve uma funcionalidade do ponto de vista de quem a utiliza.
+        > Formato: *Como [perfil], quero [ação], para [benefício].*
+
+  - type: input
+    id: id_us
+    attributes:
+      label: "Identificador"
+      placeholder: "US-001"
+    validations:
+      required: true
+
+  - type: input
+    id: epico
+    attributes:
+      label: "Épico vinculado"
+      placeholder: "E01 – Cadastro e Autenticação  |  Ref: #10"
+    validations:
+      required: true
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: "Descrição"
+      description: "Como [perfil], quero [ação], para [benefício]."
+      placeholder: |
+        Como aluno,
+        quero visualizar minha pontuação total acumulada,
+        para acompanhar meu progresso na plataforma.
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: "Critérios de aceite"
+      description: "Condições que devem ser satisfeitas para esta história ser aceita pelo PO."
+      placeholder: |
+        - [ ] A pontuação total é exibida no painel do aluno
+        - [ ] A pontuação é atualizada após cada avaliação
+        - [ ] Exibe separação de pontos por período (mensal/total)
+        - [ ] Comportamento correto quando o aluno não tem pontos ainda
+    validations:
+      required: true
+
+  - type: input
+    id: story_points
+    attributes:
+      label: "Story points"
+      description: "Estimativa de esforço definida pelo time no Sprint Planning (sequência Fibonacci: 1, 2, 3, 5, 8, 13)."
+      placeholder: "5"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: prioridade
+    attributes:
+      label: "Prioridade"
+      options:
+        - "priority:high"
+        - "priority:medium"
+        - "priority:low"
+    validations:
+      required: true
+
+  - type: input
+    id: sprint
+    attributes:
+      label: "Sprint alvo"
+      description: "Milestone correspondente à sprint onde esta US será desenvolvida."
+      placeholder: "Sprint 2"
+    validations:
+      required: false
+
+  - type: textarea
+    id: tarefas
+    attributes:
+      label: "Tarefas técnicas"
+      description: "Quebra técnica — cada item pode virar uma sub-issue do tipo Task."
+      placeholder: |
+        - [ ] Criar endpoint GET /alunos/{id}/pontuacao
+        - [ ] Criar componente PainelPontuacao no frontend
+        - [ ] Escrever testes unitários do serviço
+        - [ ] Atualizar documentação da API
+    validations:
+      required: false
+
+  - type: textarea
+    id: notas
+    attributes:
+      label: "Notas / Dependências"
+      description: "Dependências com outras USs, regras de negócio ou observações técnicas."
+      placeholder: "Depende da US-024 estar implementada. Consultar regra de negócio no Confluence."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: dod
+    attributes:
+      label: "Definition of Done (DoD)"
+      description: "Todos os itens devem estar marcados antes de mover para Done."
+      options:
+        - label: Código implementado e revisado por pelo menos 1 membro
+        - label: Testes escritos e passando no CI
+        - label: PR aprovado e mergeado na branch de desenvolvimento
+        - label: Critérios de aceite validados pelo PO
+        - label: Sem débito técnico não documentado introduzido

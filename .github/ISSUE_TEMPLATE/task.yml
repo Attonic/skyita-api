@@ -1,0 +1,84 @@
+name: "✅ Task"
+description: "Tarefa técnica de implementação vinculada a uma User Story."
+title: "[TASK] "
+labels: ["task"]
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        > **Task** é uma unidade técnica de trabalho derivada de uma User Story.
+        > Deve ser pequena o suficiente para ser concluída em 1 dia de trabalho.
+
+  - type: input
+    id: us_vinculada
+    attributes:
+      label: "User Story vinculada"
+      description: "Informe o número da issue da US pai."
+      placeholder: "US-015  |  Ref: #42"
+    validations:
+      required: true
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: "Descrição"
+      description: "O que precisa ser implementado, alterado ou configurado?"
+      placeholder: "Criar endpoint REST POST /atividades no módulo de atividades do backend Spring Boot."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: "Tipo"
+      options:
+        - Backend
+        - Frontend
+        - Banco de dados
+        - Testes
+        - DevOps / Infra
+        - Documentação
+        - Design / UX
+        - Revisão / Code Review
+    validations:
+      required: true
+
+  - type: dropdown
+    id: prioridade
+    attributes:
+      label: "Prioridade"
+      options:
+        - "priority:high"
+        - "priority:medium"
+        - "priority:low"
+    validations:
+      required: true
+
+  - type: input
+    id: responsavel
+    attributes:
+      label: "Responsável"
+      placeholder: "@usuario-github"
+    validations:
+      required: false
+
+  - type: input
+    id: estimativa
+    attributes:
+      label: "Estimativa (horas)"
+      placeholder: "4h"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: dod
+    attributes:
+      label: "Definition of Done (DoD)"
+      description: "Marque todos os itens antes de mover para Done."
+      options:
+        - label: Implementação concluída conforme descrição
+        - label: Testes escritos e passando (unitários e/ou integração)
+        - label: PR aberto com descrição clara das mudanças
+        - label: Code review realizado por pelo menos 1 membro
+        - label: Mergeado na branch de desenvolvimento sem conflitos

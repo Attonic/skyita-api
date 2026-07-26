@@ -1,0 +1,86 @@
+name: "🗂️ Épico"
+description: "Módulo ou funcionalidade grande que agrupa várias User Stories."
+title: "[ÉPICO] E0X – Nome do módulo"
+labels: ["epico"]
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        > **Épico** é uma funcionalidade grande demais para uma única Sprint. Ele agrupa User Stories relacionadas e representa um módulo do produto.
+
+  - type: input
+    id: id_epico
+    attributes:
+      label: "Identificador"
+      placeholder: "E01"
+    validations:
+      required: true
+
+  - type: input
+    id: nome
+    attributes:
+      label: "Nome do módulo"
+      placeholder: "Cadastro e Autenticação"
+    validations:
+      required: true
+
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: "Descrição"
+      description: "O que este épico entrega de valor para o produto?"
+      placeholder: "Permitir que os diferentes perfis de usuário acessem a plataforma de forma segura."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: prioridade
+    attributes:
+      label: "Prioridade"
+      options:
+        - "priority:high"
+        - "priority:medium"
+        - "priority:low"
+    validations:
+      required: true
+
+  - type: input
+    id: milestone
+    attributes:
+      label: "Milestone (Release alvo)"
+      placeholder: "MVP – v1.0"
+    validations:
+      required: false
+
+  - type: textarea
+    id: user_stories
+    attributes:
+      label: "User Stories vinculadas"
+      description: "Preencha após criar as issues das USs."
+      placeholder: |
+        - [ ] #1 – US-001 Cadastro de empresa
+        - [ ] #2 – US-002 Login com e-mail e senha
+    validations:
+      required: false
+
+  - type: textarea
+    id: criterio_conclusao
+    attributes:
+      label: "Critério de conclusão"
+      description: "Quando este épico pode ser considerado encerrado?"
+      placeholder: |
+        - Todas as USs vinculadas estão com status Done
+        - Validado em ambiente de homologação
+        - Aprovado pelo Product Owner
+    validations:
+      required: false
+
+  - type: textarea
+    id: dependencias
+    attributes:
+      label: "Dependências"
+      description: "Depende de algum outro épico ou fator externo?"
+      placeholder: "Depende de E01 estar concluído antes de iniciar."
+    validations:
+      required: false

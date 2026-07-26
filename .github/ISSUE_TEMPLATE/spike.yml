@@ -1,0 +1,120 @@
+name: "🔬 Spike"
+description: "Investigação técnica ou de negócio com tempo limitado para reduzir incerteza."
+title: "[SPIKE] "
+labels: ["spike"]
+body:
+
+  - type: markdown
+    attributes:
+      value: |
+        > **Spike** é uma tarefa de pesquisa com tempo fixo (timebox) cujo objetivo é reduzir
+        > incerteza técnica ou de negócio antes de estimar ou implementar uma User Story.
+        > O resultado de um spike é **conhecimento documentado**, não código em produção.
+
+  - type: textarea
+    id: contexto
+    attributes:
+      label: "Contexto / Problema"
+      description: "Qual incerteza ou dúvida motivou este spike?"
+      placeholder: |
+        Não sabemos ao certo como implementar a geração de recibos fiscais no formato exigido
+        pela Receita Federal. É necessário investigar bibliotecas disponíveis e requisitos legais
+        antes de estimar a US-016.
+    validations:
+      required: true
+
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: "Objetivo"
+      description: "O que queremos saber ao final deste spike?"
+      placeholder: |
+        - Identificar quais campos o recibo fiscal deve conter segundo a IN RFB 1.700
+        - Avaliar bibliotecas Python/Java para geração de PDF com assinatura digital
+        - Definir se usaremos solução própria ou integração com serviço externo (ex: DocuSign)
+    validations:
+      required: true
+
+  - type: input
+    id: us_relacionada
+    attributes:
+      label: "User Story relacionada"
+      description: "Qual US será desbloqueada após este spike?"
+      placeholder: "US-016 – Gerar recibo fiscal  |  Ref: #38"
+    validations:
+      required: false
+
+  - type: input
+    id: timebox
+    attributes:
+      label: "Timebox"
+      description: "Tempo máximo dedicado a este spike. Ao atingir o limite, documentar o que foi aprendido e seguir."
+      placeholder: "8 horas / 1 dia"
+    validations:
+      required: true
+
+  - type: input
+    id: responsavel
+    attributes:
+      label: "Responsável"
+      placeholder: "@usuario-github"
+    validations:
+      required: false
+
+  - type: input
+    id: sprint
+    attributes:
+      label: "Sprint alvo"
+      placeholder: "Sprint 1"
+    validations:
+      required: false
+
+  - type: textarea
+    id: perguntas
+    attributes:
+      label: "Perguntas a responder"
+      description: "Liste as questões específicas que este spike deve responder."
+      placeholder: |
+        1. Quais campos são obrigatórios no recibo segundo a legislação vigente?
+        2. Qual biblioteca tem melhor suporte a PDF com campos dinâmicos em Java?
+        3. O custo de integração com serviço externo é viável para o MVP?
+        4. Qual o impacto na arquitetura do módulo financeiro?
+    validations:
+      required: true
+
+  - type: textarea
+    id: resultado_esperado
+    attributes:
+      label: "Resultado esperado"
+      description: "O que será entregue ao final do spike?"
+      placeholder: |
+        - Documento de decisão técnica (ADR) no repositório
+        - US-016 estimada com story points definidos
+        - Lista de dependências e riscos mapeados
+    validations:
+      required: true
+
+  - type: textarea
+    id: resultado_obtido
+    attributes:
+      label: "Resultado obtido (preencher ao concluir)"
+      description: "Resumo do que foi descoberto. Deixe em branco ao abrir o spike."
+      placeholder: |
+        (preencher após a investigação)
+
+        Decisão: utilizaremos a biblioteca iTextPDF 7 com template HTML + Thymeleaf.
+        Campos obrigatórios mapeados no documento /docs/adr/ADR-003.md.
+        US-016 estimada em 8 story points no planning da Sprint 2.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: dod
+    attributes:
+      label: "Definition of Done do Spike"
+      options:
+        - label: Timebox respeitado
+        - label: Todas as perguntas respondidas (mesmo que a resposta seja "não sabemos ainda")
+        - label: Resultado documentado (ADR, README, comentário na issue ou wiki)
+        - label: User Story relacionada estimada ou reavaliada com base no aprendizado
+        - label: Aprendizado apresentado ao time na Review ou em reunião dedicada
