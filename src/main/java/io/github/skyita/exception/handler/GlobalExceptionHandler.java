@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    record ErrorResponse(String erro, String timesTamo){}
+    record ErrorResponse(String erro, String timestamp){}
 
     // 502
     @ExceptionHandler(ExternalApiException.class)
