@@ -25,6 +25,14 @@ public class GlobalExceptionHandler {
                 .body(new ErrorResponse(exception.getMessage(), Instant.now().toString()));
     }
 
+
+    // 404
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<ErrorResponse> handleNotFound(NoSuchElementException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ErrorResponse(exception.getMessage(), Instant.now().toString()));
+    }
+
     // Erros de validação do @Valid
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidation(
