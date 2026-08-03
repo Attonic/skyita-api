@@ -20,10 +20,8 @@ public class GlobalExceptionHandler {
 
     // 502
     @ExceptionHandler(ExternalApiException.class)
-    public ResponseEntity<ErrorResponse> handlerNotFound(
-            NoSuchElementException exception
-    ){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+    public ResponseEntity<ErrorResponse> handleExternalApi(ExternalApiException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY)
                 .body(new ErrorResponse(exception.getMessage(), Instant.now().toString()));
     }
 
