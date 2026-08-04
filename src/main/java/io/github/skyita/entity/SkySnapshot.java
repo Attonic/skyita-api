@@ -1,11 +1,6 @@
 package io.github.skyita.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,20 +8,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name = "sky_snapshots")
-@Getter @Setter
+@Getter
+@Setter
 @Data
-@NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class SkySnapshot {
+public class SkySnapshot implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "sky_snapshot_id", nullable = false, columnDefinition = "BINARY(16)")
     private UUID skySnapshotId;
 
     @Column(name = "snapshot_date", nullable = false, unique = true)
@@ -35,13 +34,13 @@ public class SkySnapshot {
     @Column(name = "generated_at", nullable = false)
     private LocalDateTime generatedAt;
 
-    @Column(nullable = false)
+    @Column(name = "city", nullable = false)
     private String city;
 
-    @Column(nullable = false)
+    @Column(name = "latitude", nullable = false)
     private Double latitude;
 
-    @Column(nullable = false)
+    @Column(name = "longitude", nullable = false)
     private Double longitude;
 
     @Lob
@@ -54,4 +53,7 @@ public class SkySnapshot {
 
     @Column(name = "planet_count")
     private Integer planetCount;
+
+    @Column(name = "satellite_count")
+    private Integer satelliteCount;
 }

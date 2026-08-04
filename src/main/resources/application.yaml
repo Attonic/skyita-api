@@ -3,10 +3,13 @@ server:
 
 spring:
   datasource:
-    url: ${DB_URL}
+    url: ${DB_URL}?createDatabaseIfNotExist=true
     username: ${DB_USER_NAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
 
   jpa:
     hibernate:
@@ -20,9 +23,9 @@ spring:
 app:
 
   location:
-    latitude:  -3.3936   # Latitude de Itapecuru-Mirim/MA
+    latitude: -3.3936   # Latitude de Itapecuru-Mirim/MA
     longitude: -44.3669  # Longitude de Itapecuru-Mirim/MA
-    altitude:  30        # Altitude em metros acima do solo
+    altitude: 30        # Altitude em metros acima do solo
     city: Itapecuru-Mirim
 
   apis:
