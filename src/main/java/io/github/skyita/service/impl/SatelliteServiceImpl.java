@@ -33,7 +33,7 @@ public class SatelliteServiceImpl implements SatelliteService {
 
     @Override
     public List<SatelliteResponseDto> findAbove(double lat, double lon, double altMeters) {
-        String url = "%s/above/%.4f/%.4f/%.0f/70/0/&apiKey=%s"
+        String url = "%s/above/%.4f/%.4f/%.0f/70/0/?apiKey=%s"
             .formatted(baseUrl, lat, lon, altMeters, apiKey);
 
         log.info("Buscando satélites: lat={}, lon={}", lat, lon);
@@ -50,7 +50,7 @@ public class SatelliteServiceImpl implements SatelliteService {
 
             .bodyToMono(new ParameterizedTypeReference<
                             Map<String, Object>>() {})
-            .timeout(Duration.ofSeconds(10))
+            .timeout(Duration.ofSeconds(30))
             .doOnError(e -> log.error("Erro N2YO: {}", e.getMessage()))
             .block();
 
