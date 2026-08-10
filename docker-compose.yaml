@@ -1,0 +1,20 @@
+# Arquivo docker para subir um conteiner com o MySQL automaticamente chamado skydb, com senha root exposto na porta 3306
+# Obs: necessárrio instalar o docker na maquina para gerar o banco automaticamente
+
+version: '3.8'
+
+services:
+  mysql-skydb:
+    image: mysql:8.0
+    container_name: skyita-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: skydb
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - skyita-db-data:/var/lib/mysql
+
+volumes:
+  skyita-db-data:
